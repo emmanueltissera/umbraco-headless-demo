@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<main role="main">
+    <div class="container">
+
+        <!-- Heading Row -->
+        <div class="row my-4">
+            <div class="col-lg-4">
+                <h1>Want a Phrase on a tee?</h1>
+                <p>Inspiration can come from anywhere, but a favourite source is inspirational quotes. Here are several <strong>phrases</strong> that will help you put your own twist on the world. Wear it proudly on a t-shirt and stand up for what you believe in.</p>
+                <ul class="list list-magic strong bigger">
+                    <li>Why did the inventor of the light bulb fail 10,000 times?</li>
+                    <li>Who said a woman is like a tea bag?</li>
+                    <li>Do you feel the rain or do you get wet?</li>
+                </ul>
+            </div>
+            <!-- /.col-md-4 -->
+
+            @await Html.PartialAsync("_CarouselPartial")
+        </div>
+        <!-- /.row -->
+
+        <h2 class="text-success">Success! You are ready for the Umbraco Headless demo.</h2>
+
+        @await Html.PartialAsync("_ShopItemsPartial")
+
+        <div class="row my-4">
+            <div class="col-lg-4 col-md-6">
+                <i class="material-icons md-150">person_pin</i>
+                <h2>Customised for you</h2>
+                <p>These phrases can be printed on tees, hoodies or even a cap. You can even bring your favourite fit T-shirt or Hoodie and get it printed on.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <i class="material-icons md-150">filter_1</i>
+                <h2>No minimum order</h2>
+                <p>There is no minimum quantity you need to order. You can print one, two or even a dozen unique tshirts or hoodies</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <i class="material-icons md-150">timer </i>
+                <h2>Printed in 20 mins</h2>
+                <p>The prints will be done while you wait at no extra cost. We print on-the-spot from our premises in Noble Park 3174.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+            </div>
+        </div><!-- /.row -->
+    </div>
+</main>

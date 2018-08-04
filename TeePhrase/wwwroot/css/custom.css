@@ -1,0 +1,31 @@
+body {
+    padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+
+
+.social-links li i {   
+    vertical-align: bottom;
+}
+
+.material-icons.md-150 {
+    font-size: 150px;
+}
+
+footer a {
+    color: #cccccc;
+}
+
+.breadcrumb {
+    background-color: #fff;
+}
+
+.no-focus > .btn-outline-secondary:not(:disabled):not(.disabled).active:focus
+{
+    box-shadow: none;
+}
