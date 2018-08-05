@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Umbraco.Headless.Client;
 
 namespace TeePhrase
 {
@@ -31,6 +32,7 @@ namespace TeePhrase
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddUmbracoHeadlessClient(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
