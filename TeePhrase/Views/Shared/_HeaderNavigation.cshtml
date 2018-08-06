@@ -1,8 +1,16 @@
-﻿<header>
+﻿@inject HeadlessService HeadlessService
+@{
+    var site = await HeadlessService.GetSite(Model);
+    PagedResult<ContentItem> allChildren = await HeadlessService.GetChildren(site);
+    var children = allChildren.ToList().Where(x => x.Name != "System");
+    var cssClass = Model.Url == "/" ? "active" : null;
+}
+
+<header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="/img/logo/shirt.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="~/img/logo/shirt.svg" width="30" height="30" class="d-inline-block align-top" alt="">
                 Tee-Phrases
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,35 +18,38 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item @cssClass">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">T-shirt designs</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Big-gun phrases</a>
-                            <a class="dropdown-item" href="#">Nerd phrases</a>
-                            <a class="dropdown-item" href="#">Star phrases</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">T-shirt designs</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Help &amp; Support</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">About Us</a>
-                            <a class="dropdown-item" href="#">Return Policy</a>
-                            <a class="dropdown-item" href="#">Care Instructions</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Help &amp; Support</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Contact Us</a>
-                    </li>
+                    @foreach (var child in children)
+                    {
+                        var grandChildren = await HeadlessService.GetChildren(child);
+                        cssClass = Model.Url == child.Url || grandChildren.Any(x => Model.Url.StartsWith(x.Url)) ? "active" : null;
+                        if (grandChildren.Count > 0)
+                        {
+                            <li class="nav-item dropdown @cssClass">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="@child.Url" role="button" aria-haspopup="true" aria-expanded="false">@child.Name</a>
+                                <div class="dropdown-menu">
+                                    @foreach (var grandChild in grandChildren)
+                                    {
+                                        cssClass = Model.Url == grandChild.Url || Model.Url.StartsWith(grandChild.Url) ? "active" : null;
+                                        <a class="dropdown-item @cssClass" href="@grandChild.Url">@grandChild.Name</a>
+                                    }
+                                    <div class="dropdown-divider"></div>
+                                    @{
+                                        cssClass = Model.Url == child.Url ? "active" : null;
+                                    }
+                                    <a class="dropdown-item @cssClass" href="@child.Url">@child.Name</a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item @cssClass">
+                                <a href="@child.Url" class="nav-link">@child.Name</a>
+                            </li>
+                        }
+                    }
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
