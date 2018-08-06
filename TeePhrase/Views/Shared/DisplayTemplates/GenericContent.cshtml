@@ -2,24 +2,6 @@
 
 @await Html.PartialAsync("_PageHeader")
 
-@if (Model != null && Model.BodyContent.Sections != null)
-{
-    foreach (var section in Model.BodyContent.Sections)
-    {
-        foreach (var row in section.Rows)
-        {
-            <div class="row">
-                @foreach (var area in row.Areas)
-                {
-                    foreach (var control in area.Controls)
-                    {
-                        var type = control.Editor.Name;
-                        var columnClass = $"col-lg-{area.Grid}";
-                        var content = control.Editor?.Name == "Headline" ? $"<h3>{control.Value}</h3>" : control.Value;
-                        <div class="@columnClass">@Html.Raw(content)</div>                        
-                    }
-                }
-            </div>
-        }
-    }
-}
+<h6>Generic content from the CMS will be displayed here.</h6>
+
+<div>Rooftop bars victory vs heart, the rebels tullamarine formula one grand prix the croft institute shane warne, emerald peacock temper trap footy a macaron connoisseur frankston bogans, lygon street spruikers melbourne cricket ground bourke st mall brunswick and brunswick st mamasita, the melbourne cup bill clinton ate two bowls the emerald peacock.<br><br>Cold drip coffee myki queues, laksa king dumplings hu tong dumplings purple emerald brunswick st hippy, collingwood ferals secret laneway bars etihad stadium brown alley graffiti, avalon is so not melb formula one grand prix aami park rooftop bars chopper read, south melb dim sims lions bar the G'.<br><br>Fairy penguins collingwood ferals, tullamarine ac/dc pellegrini's naked for satan rooftop bars, carlton prahran hipsters mamasita the crazy wing challenge the storm, brunswick st hippy the emerald peacock grammar vs scotch middle-aged lycra clad cyclists chopper read, brunswick and brunswick st kath and kim the rebels.<br><br>The croft institute brunswick and brunswick st, avalon is so not melb the storm warehouse chic chapel street the crazy wing challenge, collingwood ferals ac/dc kylie minogue temper trap victory vs heart, old melbourne gaol south melb dim sims rocking out the espy chopper read a macaron connoisseur, chaddie melb moomba.<br><br>Dumplings spring racing carnival, movida cumulus inc melbourne central collins place middle-aged lycra clad cyclists, the espy citylink black is alway in fashion werribee wildlife mamasita, richmond tigers shane warne dame edna cookie chapel street, world's most liveable city tullamarine running the tan.<br><br></div>
