@@ -1,40 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using TeePhrase.Models;
-using Umbraco.Headless.Client.Models;
 using Umbraco.Headless.Client.Services;
+using Umbraco.Headless.Client.Web;
 
 namespace TeePhrase.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : DefaultUmbracoController
     {
-        public IActionResult Index()
+        public HomeController(UmbracoContext umbracoContext, HeadlessService headlessService) : base(umbracoContext, headlessService)
         {
-            return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public override Task<IActionResult> Index()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            // get the content for the current route
+            var content = UmbracoContext.GetContent(false);
+
+            // map the ContentItem to a custom model called Home
+            var model = HeadlessService.MapTo<Home>(content);
+
+            // return the view which will be located at
+            return Task.FromResult((IActionResult)View(model));
         }
 
-        public HomeController(HeadlessService headlessService)
-        {
-            this._headlessService = headlessService;
-        }
-
-        private readonly HeadlessService _headlessService;
-
-        public async Task<IActionResult> Headless()
-        {
-            // Get all content
-            var allContent = await _headlessService.Query().GetAll();            
-            return View(allContent);
-        }
     }
 }

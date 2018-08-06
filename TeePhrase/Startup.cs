@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Umbraco.Headless.Client;
+using Umbraco.Headless.Client.Web;
 
 namespace TeePhrase
 {
@@ -34,6 +35,8 @@ namespace TeePhrase
 
             services.AddUmbracoHeadlessClient(Configuration);
 
+            services.AddUmbracoHeadlessWebEngine();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -54,12 +57,8 @@ namespace TeePhrase
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseUmbracoHeadlessWebEngine();
+
         }
     }
 }
