@@ -1,0 +1,89 @@
+﻿@model Design
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paymentForm" class="payment-form">
+    <div class="form-row">
+        <div class="form-group col-lg-12">
+            <h5>Get your "@Model.Name" tee now</h5>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-6">
+            <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Size</span>
+                </div>
+                <select name="os1" id="os1" required="" class="custom-select" title="Select Tshirt Size">
+                    <option value="" selected="selected">Select Size</option>
+                    <option value="Small (Unisex)">Small (Unisex)</option>
+                    <option value="Medium (Unisex)">Medium (Unisex)</option>
+                    <option value="Large (Unisex)">Large (Unisex) </option>
+                    <option value="XL (Unisex)">XL (Unisex)</option>
+                    <option value="XXL (Unisex)">XXL (Unisex)</option>
+                    <option value="XXXL (Unisex)">XXXL (Unisex)</option>
+                    <option value="14 (Ladies)">14 (Ladies)</option>
+                    <option value="16 (Ladies)">16 (Ladies)</option>
+                    <option value="18 (Ladies)">18 (Ladies)</option>
+                    <option value="20 (Ladies)">20 (Ladies)</option>
+                    <option value="04 (Kids)">04 (Kids)</option>
+                    <option value="06 (Kids)">06 (Kids)</option>
+                    <option value="08 (Kids)">08 (Kids)</option>
+                    <option value="10 (Kids)">10 (Kids)</option>
+                    <option value="12 (Kids)">12 (Kids)</option>
+                    <option value="14 (Kids)">14 (Kids)</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group col-lg-6">
+            <div class="input-group mb12">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Qty</span>
+                </div>
+                <select name="quantity" id="quantity" required="" class="custom-select" title="Select Quantity of Tshirt">
+                    <option value="">Select Quantity</option>
+                    <option value="1" selected="selected">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-12">
+            <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="phone-label">Phone</span>
+                </div>
+                <input id="os2" name="os2" class="form-control" type="tel" placeholder="Your phone number (just in case)" required pattern="[0-9\s\+()\-]*" aria-label="Phone number input" aria-describedby="phone-label" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-12">
+            <button type="submit" class="btn btn-primary">
+                <i class="material-icons">shopping_cart</i> Buy Now
+            </button>
+        </div>
+        <div class="form-group col-lg-12">
+            <p class="small mb-0">All credit cards are accepted. Payments are processed securely through PayPal.</p>
+        </div>
+        <div class="form-group col-lg-12">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Buy now with PayPal" class="mb-0" />
+            <img alt="PayPal verification" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+        </div>
+    </div>
+    <input type="hidden" name="on1" value="Size" />
+    <input type="hidden" name="on2" value="Your phone number" />
+    <input type="hidden" name="shipping" id="shipping" value="8" data-first-item="8" data-additional-items="10" />
+    <input type="hidden" name="cmd" value="_xclick" />
+    <input type="hidden" name="business" value="NOTAREALBUSINESS" />
+    <input type="hidden" name="amount" value="@Model.Price" />
+    <input type="hidden" name="item_name" value="@Model.Phrase" />
+    <input type="hidden" name="item_number" value="@Model.ReferenceNumber" />
+    <input type="hidden" name="currency_code" value="AUD" />
+    <input type="hidden" name="return" value="https://www.example.com/success" />
+    <input type="hidden" name="cancel_return" value="https://www.example.com/cancel" />
+    <input type="hidden" name="rm" value="1" />
+    <input type="hidden" name="no_shipping" value="2" />
+</form>

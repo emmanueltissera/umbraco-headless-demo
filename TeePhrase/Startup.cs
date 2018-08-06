@@ -49,7 +49,13 @@ namespace TeePhrase
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                // Handle unhandled exceptions as Internal Server Errors (500)
+                app.UseExceptionHandler("/Error/500");
+
+                // Display friendly error pages for any 
+                // non-success case (status code is >= 400 and < 600)
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
                 app.UseHsts();
             }
 

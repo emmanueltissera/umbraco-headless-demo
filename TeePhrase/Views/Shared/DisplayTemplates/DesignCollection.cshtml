@@ -1,0 +1,11 @@
+﻿@inject HeadlessService HeadlessService
+@model DesignCollection
+
+@await Html.PartialAsync("_PageHeader")
+
+<div class="row portfolio-area">
+    @foreach (var design in await HeadlessService.GetChildren<Design>(Model))
+    {
+        @Html.DisplayFor(m => design, "DesignTile")
+    }
+</div>

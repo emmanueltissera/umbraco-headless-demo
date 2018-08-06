@@ -3,7 +3,7 @@
     var site = await HeadlessService.GetSite(Model);
     PagedResult<ContentItem> allChildren = await HeadlessService.GetChildren(site);
     var children = allChildren.ToList().Where(x => x.Name != "System");
-    var cssClass = Model.Url == "/" ? "active" : null;
+    var cssClass = Model.Url == "/" ? "active" : null;    
 }
 
 <header>
@@ -36,7 +36,7 @@
                                         <a class="dropdown-item @cssClass" href="@grandChild.Url">@grandChild.Name</a>
                                     }
                                     <div class="dropdown-divider"></div>
-                                    @{
+                                    @{ 
                                         cssClass = Model.Url == child.Url ? "active" : null;
                                     }
                                     <a class="dropdown-item @cssClass" href="@child.Url">@child.Name</a>

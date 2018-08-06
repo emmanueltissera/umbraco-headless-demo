@@ -6,15 +6,15 @@ using Umbraco.Headless.Client.Web;
 
 namespace TeePhrase.Controllers
 {
-    public class HomeController : BaseContentItemController
+    public class DesignCollectionController : BaseContentItemController
     {
-        public HomeController(UmbracoContext umbracoContext, HeadlessService headlessService) : base(umbracoContext, headlessService)
+        public DesignCollectionController(UmbracoContext umbracoContext, HeadlessService headlessService) : base(umbracoContext, headlessService)
         {
         }
 
         public override Task<IActionResult> Index()
         {
-            return RenderContentItem<Home>();
+            return RenderContentItem<DesignCollection>();
         }
     }
 }

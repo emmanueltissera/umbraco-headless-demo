@@ -1,0 +1,17 @@
+﻿@model Design
+
+<div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="@Model.Id" data-type="@Model.ParentId">
+    <div class="card h-100">
+        <a href="@Model.Url"><img class="card-img-top" src="@Model.Thumbnail?.FirstOrDefault()?.Url" alt="@Model.Name"></a>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a href="@Model.Url">@Model.Name.TruncateTo(25)</a>
+            </h4>
+            <h5>$@Model.Price (AUD)</h5>
+            <p class="card-text">@Model.Phrase.TruncateTo(40)</p>
+        </div>
+        <div class="card-footer text-right">
+            <small class="text-muted">- @Model.WhoSaidThis</small>
+        </div>
+    </div>
+</div>

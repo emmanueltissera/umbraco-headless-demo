@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿@model ContentItem
+
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -24,12 +26,22 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>@ViewData["Title"] - Tee-Phrases</title>
+    <title>@Model.Name - Tee-Phrases</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="~/css/custom.css" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123405645-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-123405645-1');
+    </script>
 
 </head>
 <body>
@@ -53,6 +65,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="~/js/jquery.easing.js"></script>
     <script src="~/js/jquery.quicksand.js"></script>
+    @RenderSection("Scripts", false)
     <script src="~/js/custom.js"></script>
 </body>
 </html>

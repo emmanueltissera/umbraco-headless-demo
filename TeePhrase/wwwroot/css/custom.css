@@ -9,7 +9,7 @@ body {
 }
 
 
-.social-links li i {   
+.material-icons {   
     vertical-align: bottom;
 }
 
@@ -28,4 +28,11 @@ footer a {
 .no-focus > .btn-outline-secondary:not(:disabled):not(.disabled).active:focus
 {
     box-shadow: none;
+}
+
+.payment-form {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 5px 5px;
+    border: 1px solid #ccc;
 }

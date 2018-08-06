@@ -31,3 +31,21 @@
     }//if quicksand
 
 });
+
+
+$(function () {
+
+    $("#paymentForm select#quantity").change(function () {
+        var shippingRate = $("#paymentForm input#shipping");
+        if ($(this).val() == "") {
+            shippingRate.val("");
+        }
+        else if ($(this).val() == "1") {
+            shippingRate.val(shippingRate.data("first-item"));
+        }
+        else {
+            shippingRate.val(shippingRate.data("additional-items"));
+        }
+    });
+
+});

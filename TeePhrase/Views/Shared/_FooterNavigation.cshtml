@@ -1,9 +1,16 @@
-﻿<footer class="footer py-5 bg-dark text-white">
+﻿@inject HeadlessService HeadlessService
+@{
+    var shop = await HeadlessService
+    .Query()
+    .GetFirst<Shop>(); ;
+}
+<!-- Footer -->
+<footer class="footer py-5 bg-dark text-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="footerlogo">
-                    <h5><a href="/"> <img src="/img/logo/shirt.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Tee-Phrases</a></h5>
+                    <h5><a href="/"> <img src="~/img/logo/shirt.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Tee-Phrases</a></h5>
                     <!-- <img src="/img/logo.png" alt="" /> -->
                 </div>
                 <!-- end logo -->
@@ -17,10 +24,11 @@
             <div class="col-lg-4 col-md-4">
                 <h5>T-shirt Designs</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">All designs</a></li>
-                    <li><a href="#">Big-gun phrases</a></li>
-                    <li><a href="#">Nerd phrases</a></li>
-                    <li><a href="#">Star phrases</a></li>
+                    <li><a href="@shop.Url">All designs</a></li>
+                    @foreach (var child in await HeadlessService.GetChildren(shop))
+                    {
+                        <li><a href="@child.Url">@child.Name</a></li>
+                    }
                 </ul>
             </div>
             <div class="col-lg-4 col-md-4">

@@ -11,10 +11,4 @@
     <PackageReference Include="UmbracoCms.Headless.Client.Web" Version="0.9.0-CI-20180726-02" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Views\Home\Headless.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-  </ItemGroup>
-
 </Project>

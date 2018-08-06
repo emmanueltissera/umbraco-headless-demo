@@ -1,15 +1,33 @@
-﻿<div class="row">
+﻿@inject HeadlessService HeadlessService
+@model ContentItem
+@{
+    var ancestors = new List<KeyValuePair<string, string>>();
+    var currentChild = Model;
+    while (currentChild.Path.Split(',').Length > 3)
+    {
+        currentChild = await HeadlessService.GetParent(currentChild);
+        if (currentChild != null)
+        {
+            ancestors.Add(new KeyValuePair<string, string>(currentChild.Name, currentChild.Url));
+        }
+    }
+
+   ancestors.Reverse();
+}
+<div class="row">
     <div class="col-lg-12">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb px-0 float-right">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/t-shirt-designs/">T-shirt designs</a></li>
-                <li class="breadcrumb-item"><a href="/t-shirt-designs/big-gun-phrases/">Big-gun phrases</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Well done is better</li>
+                @foreach (var item in ancestors)
+                {
+                    <li class="breadcrumb-item"><a href="@item.Value">@item.Key</a></li>
+                }
+                <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
             </ol>
         </nav>
     </div>
     <div class="col-lg-12">
-        <h1>Well done is better</h1>
+        <h1>@Model.Name</h1>
     </div>
 </div>

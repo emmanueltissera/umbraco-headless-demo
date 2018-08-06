@@ -1,0 +1,25 @@
+﻿@model GenericContent
+
+@await Html.PartialAsync("_PageHeader")
+
+@if (Model != null && Model.BodyContent.Sections != null)
+{
+    foreach (var section in Model.BodyContent.Sections)
+    {
+        foreach (var row in section.Rows)
+        {
+            <div class="row">
+                @foreach (var area in row.Areas)
+                {
+                    foreach (var control in area.Controls)
+                    {
+                        var type = control.Editor.Name;
+                        var columnClass = $"col-lg-{area.Grid}";
+                        var content = control.Editor?.Name == "Headline" ? $"<h3>{control.Value}</h3>" : control.Value;
+                        <div class="@columnClass">@Html.Raw(content)</div>                        
+                    }
+                }
+            </div>
+        }
+    }
+}

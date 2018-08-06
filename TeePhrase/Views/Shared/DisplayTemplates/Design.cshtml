@@ -1,0 +1,57 @@
+﻿@inject HeadlessService HeadlessService
+@model Design
+@{
+    var designQuery = await HeadlessService
+        .Query()
+        .GetAll<Design>(0, 4);
+
+    var designs = designQuery.Where(x => x.Id != Model.Id).Take(3);
+
+}
+
+@await Html.PartialAsync("_PageHeader")
+
+<!-- Portfolio Item Row -->
+<div class="row">
+
+    @await Html.PartialAsync("_CarouselPartial", Model.Photos)
+
+    <div class="col-md-4">
+        <blockquote class="blockquote text-right">
+            <p class="mb-0">@Model.Phrase</p>
+            <footer class="blockquote-footer">Said by <cite title="Source Title">@Model.WhoSaidThis</cite></footer>
+        </blockquote>
+        <div class="lead">
+            @Html.Raw(Model.Description)
+        </div>
+
+        <dl>
+            <dt>Price</dt>
+            <dd>$@Model.Price (AUD)</dd>
+
+            <dt>Shipping Cost <small>(<a href="/help-support/return-policy/" title="Return policy" target="_blank">how about refunds?</a>)</small></dt>
+            <dd>$8 for a single item and $10 for upto 5 items (Flat rate across Australia). <a href="/contact-us/" class="contact-us-link">Contact us</a> for overnight or express post options.</dd>
+
+            <dt>Our Reference Number</dt>
+            <dd>@Model.ReferenceNumber</dd>
+        </dl>
+
+        @await Html.PartialAsync("_BuyNowFormPartial")
+
+        <p class="small mt-1">Want to customize this t-shirt further or have your own design twist? <a href="/contact-us/">Contact Us</a>.</p>
+
+    </div>
+
+
+</div>
+<!-- /.row -->
+<!-- Related Projects Row -->
+<h3 class="my-4">Other Designs which might interest you</h3>
+
+<div class="row">
+    @foreach (var design in designs)
+    {
+        @Html.DisplayFor(m => design, "DesignTile")
+    }
+</div>
+<!-- /.row -->

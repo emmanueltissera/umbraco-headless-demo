@@ -4,25 +4,25 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             @{
-                var cssClass = "active";
+                    var cssClass = "active";
             }
             @for (int i = 0; i < Model.Count(); i++)
-            {
-                <li data-target="#myCarousel" data-slide-to="@i" class="@cssClass"></li>
-                cssClass = null;
-            }
+                {
+            <li data-target="#myCarousel" data-slide-to="@i" class="@cssClass"></li>
+                    cssClass = null;
+                }
         </ol>
         <div class="carousel-inner">
             @{
-                cssClass = "active";
+                    cssClass = "active";
             }
             @foreach (var photo in Model)
-            {
-                <div class="carousel-item @cssClass">
-                    <img class="d-block w-100" src="@photo.Url" alt="@photo.Name">
-                </div>
-                cssClass = null;
-            }
+                {
+            <div class="carousel-item @cssClass">
+                <img class="d-block w-100" src="@photo.Url" alt="@photo.Name">
+            </div>
+                    cssClass = null;
+                }
         </div>
         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
