@@ -59,14 +59,14 @@ Create the following document types:
      * Button Title [TextString, Mandtory] 
      * Button Link [Content Picker, Mandtory] 
   * Permissions
-    *  No child items
-  
-  * System Folder
-    * No Properties
-    * Permissions
-      * Allowed Child Nodes
-        * System Folder
-        * Unique Selling Point
+    *  No child items 
+
+* System Folder
+  * No Properties 
+  * Permissions
+    * Allowed Child Nodes
+      * System Folder
+      * Unique Selling Point
 
 * Home
   * Intro [Tab]
