@@ -1,199 +1,33 @@
-﻿<div class="row">
+﻿@inject HeadlessService HeadlessService
+@model Shop
+@{
+    var designCollections = await HeadlessService.GetChildren<DesignCollection>(Model);
+}
+
+<div class="row">
     <div class="col-lg-12 my-4 filter">
         <div class="d-none d-sm-block btn-group no-focus" role="group" aria-label="Filter Designs">
             <button type="button" class="btn btn-outline-secondary active" data-filter="all">All Designs</button>
-            <button type="button" class="btn btn-outline-secondary" data-filter="89597f7a-19b8-431b-bcfe-1ff4e1b46778">Big-gun phrases</button>
-            <button type="button" class="btn btn-outline-secondary" data-filter="1d96f450-3cf4-4e93-a9ab-16cfd5f14692">Nerd phrases</button>
-            <button type="button" class="btn btn-outline-secondary" data-filter="d382deba-7d16-49e8-82fd-c58cbb4dbdc4">Star phrases</button>
+            @foreach (var singleCollection in designCollections)
+            {
+                <button type="button" class="btn btn-outline-secondary" data-filter="@singleCollection.Id">@singleCollection.Name</button>
+            }
         </div>
         <div class="d-block d-sm-none btn-group-vertical no-focus" role="group" aria-label="Filter Designs">
             <button type="button" class="btn btn-outline-secondary active" data-filter="all">All Designs</button>
-            <button type="button" class="btn btn-outline-secondary" data-filter="89597f7a-19b8-431b-bcfe-1ff4e1b46778">Big-gun phrases</button>
-            <button type="button" class="btn btn-outline-secondary" data-filter="1d96f450-3cf4-4e93-a9ab-16cfd5f14692">Nerd phrases</button>
-            <button type="button" class="btn btn-outline-secondary" data-filter="d382deba-7d16-49e8-82fd-c58cbb4dbdc4">Star phrases</button>
+            @foreach (var singleCollection in designCollections)
+            {
+                <button type="button" class="btn btn-outline-secondary" data-filter="@singleCollection.Id">@singleCollection.Name</button>
+            }
         </div>
     </div>
 </div>
-<div class="row portfolio-area">    
-
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="e3253ccc-1e06-442f-b1a7-64d877c14998" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(1)" alt="Be a good one"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Be a good one</a>
-                </h4>
-                <h5>$30 (AUD)</h5>
-                <p class="card-text">Whatever you are, be a good one</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Abraham Lincoln</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="d4f43903-1326-4c36-9b3e-5bb20b0d3f06" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(2)" alt="Well done is better"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Well done is better</a>
-                </h4>
-                <h5>$29 (AUD)</h5>
-                <p class="card-text">Well done is better than well said</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Benjamin Franklin</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="c289ddaf-302f-4d57-a4dc-20bb89838fc8" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(3)" alt="Impossible until done"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Impossible until done</a>
-                </h4>
-                <h5>$32 (AUD)</h5>
-                <p class="card-text">It always seems impossible until it&#x27;s...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Nelson Mandela</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="dde7c7b7-674f-43e8-87d8-921bfb9bf52b" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(4)" alt="Time is limited"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Time is limited</a>
-                </h4>
-                <h5>$30 (AUD)</h5>
-                <p class="card-text">Your time is limited, so don&#x27;t waste it...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Steve Jobs</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="d61ac654-dcab-40fb-a58c-2b3502daad34" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(5)" alt="Like a tea bag"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Like a tea bag</a>
-                </h4>
-                <h5>$29 (AUD)</h5>
-                <p class="card-text">A woman is like a tea bag - You never...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Eleanor Roosevelt</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="4e7a8dc1-6402-4e21-b8a4-12ca155fbc0b" data-type="1d96f450-3cf4-4e93-a9ab-16cfd5f14692">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(6)" alt="10,000 failures"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">10,000 failures</a>
-                </h4>
-                <h5>$34 (AUD)</h5>
-                <p class="card-text">I have not failed. I&#x27;ve just found...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Thomas Alva Edison</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="66c0bf17-eceb-4bc6-8d25-5183e11ac856" data-type="1d96f450-3cf4-4e93-a9ab-16cfd5f14692">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(7)" alt="Be curious"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Be curious</a>
-                </h4>
-                <h5>$32 (AUD)</h5>
-                <p class="card-text">Be less curious about people and more...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Marie Curie</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="47291f4e-c1e4-4cad-83f0-300cd2a67e2e" data-type="1d96f450-3cf4-4e93-a9ab-16cfd5f14692">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(8)" alt="Simplicity defined"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Simplicity defined</a>
-                </h4>
-                <h5>$27 (AUD)</h5>
-                <p class="card-text">Everything should be made as simple as...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Albert Einstein</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="9ced4c5b-14ba-4176-8b24-ed93743427b7" data-type="d382deba-7d16-49e8-82fd-c58cbb4dbdc4">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(9)" alt="Feel the rain"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Feel the rain</a>
-                </h4>
-                <h5>$33 (AUD)</h5>
-                <p class="card-text">Some people feel the rain, others get...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Bob Marley</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="765b90b8-3a2e-4b5e-ab2f-eb34d9fea9b3" data-type="d382deba-7d16-49e8-82fd-c58cbb4dbdc4">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(10)" alt="Better things"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Better things</a>
-                </h4>
-                <h5>$36 (AUD)</h5>
-                <p class="card-text">Sometimes good things fall apart, so...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Marilyn Monroe</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="478718d2-5666-44d8-a7a0-2764b321e344" data-type="d382deba-7d16-49e8-82fd-c58cbb4dbdc4">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(11)" alt="I, Human"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">I, Human</a>
-                </h4>
-                <h5>$27 (AUD)</h5>
-                <p class="card-text">I think of myself as a human</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Bruce Lee</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="20e7c6e8-85de-4e26-8feb-34ffe38a47ad" data-type="d382deba-7d16-49e8-82fd-c58cbb4dbdc4">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(12)" alt="Courage to dream"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Courage to dream</a>
-                </h4>
-                <h5>$30 (AUD)</h5>
-                <p class="card-text">All our dreams can come true, if we have...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Walt Disney</small>
-            </div>
-        </div>
-    </div>
+<div class="row portfolio-area">
+    @foreach (var singleCollection in designCollections)
+    {
+        @foreach (var design in await HeadlessService.GetChildren<Design>(singleCollection))
+        {
+            @Html.DisplayFor(m => design, "DesignTile")
+        }
+    }
 </div>

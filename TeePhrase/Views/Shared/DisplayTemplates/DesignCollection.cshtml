@@ -4,49 +4,8 @@
 @await Html.PartialAsync("_PageHeader")
 
 <div class="row portfolio-area">
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="e3253ccc-1e06-442f-b1a7-64d877c14998" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(1)" alt="Be a good one"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Product 1</a>
-                </h4>
-                <h5>$30 (AUD)</h5>
-                <p class="card-text">Whatever you are, be a good one</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Abraham Lincoln</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="d4f43903-1326-4c36-9b3e-5bb20b0d3f06" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(2)" alt="Well done is better"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Product 2</a>
-                </h4>
-                <h5>$29 (AUD)</h5>
-                <p class="card-text">Well done is better than well said</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Benjamin Franklin</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-id="c289ddaf-302f-4d57-a4dc-20bb89838fc8" data-type="89597f7a-19b8-431b-bcfe-1ff4e1b46778">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://via.placeholder.com/450x600?text=FPO+450x600+(3)" alt="Impossible until done"></a>
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="#">Product 3</a>
-                </h4>
-                <h5>$32 (AUD)</h5>
-                <p class="card-text">It always seems impossible until it&#x27;s...</p>
-            </div>
-            <div class="card-footer text-right">
-                <small class="text-muted">- Nelson Mandela</small>
-            </div>
-        </div>
-    </div>
+    @foreach (var design in await HeadlessService.GetChildren<Design>(Model))
+    {
+        @Html.DisplayFor(m => design, "DesignTile")
+    }
 </div>
